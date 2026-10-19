@@ -1,0 +1,636 @@
+{
+  "info": {
+    "_postman_id": "1ed72fe8-b59a-4109-b6dc-200198cd393c",
+    "name": "igikomera-midterm.postman_collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58441365",
+    "_collection_link": "https://go.postman.co/collection/58441365-1ed72fe8-b59a-4109-b6dc-200198cd393c?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "A2 List animal types",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/animal-types/all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "animal-types",
+            "all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 save animal type",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\" : \"Cow\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/animal-types/save",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "animal-types",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 read animal type by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/animal-types/2ee314bf-d0c3-4f30-9e8e-48e19dfebee9",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "animal-types",
+            "2ee314bf-d0c3-4f30-9e8e-48e19dfebee9"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 animal type update",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\" : \"Goat\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/animal-types/update/2fb71e4f-4e5f-41ed-86cb-43fde8476200",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "animal-types",
+            "update",
+            "2fb71e4f-4e5f-41ed-86cb-43fde8476200"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 Delete animal",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/animal-types/delete/2fb71e4f-4e5f-41ed-86cb-43fde8476200",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "animal-types",
+            "delete",
+            "2fb71e4f-4e5f-41ed-86cb-43fde8476200"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 create stall",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"stallNumber\" : 12,\n    \"name\" : \"Stall A\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/stalls/save",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "stalls",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 read all stall",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/stalls/all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "stalls",
+            "all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 read stall by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/stalls/b6809c7e-5f64-452b-add1-98ffa0c2907f",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "stalls",
+            "b6809c7e-5f64-452b-add1-98ffa0c2907f"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 update stall by id",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"stallNumber\" : 13,\n    \"name\" : \"Stall B\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/stalls/update/b6809c7e-5f64-452b-add1-98ffa0c2907f",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "stalls",
+            "update",
+            "b6809c7e-5f64-452b-add1-98ffa0c2907f"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 delete stall",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/stalls/delete/b6809c7e-5f64-452b-add1-98ffa0c2907f",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "stalls",
+            "delete",
+            "b6809c7e-5f64-452b-add1-98ffa0c2907f"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 Save buyer",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"firstName\": \"Chancy\",\n    \"lastname\": \"Byiringiro\", \"nationalId\": \"11980012345678\",\n    \"phone\": \"0789525731\", \"ditsrict\": \"Kigali\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/buyers/save",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "buyers",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 read buyers",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/buyers/all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "buyers",
+            "all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 read buyer by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/buyers/3b9ecedd-c14e-4cba-ab54-1beaa90cf4aa",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "buyers",
+            "3b9ecedd-c14e-4cba-ab54-1beaa90cf4aa"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 UPDATE buyer by ID",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"lastName\" : \"Byiringiro\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/buyers/update/3b9ecedd-c14e-4cba-ab54-1beaa90cf4aa",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "buyers",
+            "update",
+            "3b9ecedd-c14e-4cba-ab54-1beaa90cf4aa"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 delete buyer",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/buyers/delete/3b9ecedd-c14e-4cba-ab54-1beaa90cf4aa",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "buyers",
+            "delete",
+            "3b9ecedd-c14e-4cba-ab54-1beaa90cf4aa"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 save seller",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"firstName\": \"Alice\",\n    \"lastName\": \"Bagasha\",\n    \"phone\": \"0784534872\",\n    \"farmLocation\": \"Nyagatare\",\n    \"Stall\": {\"id\": \"85d507cd-1501-4f90-88b9-e8856b2c335d\"}, \"animalTypes\": [{\"id\": \"4c3ef41a-c32f-49a2-b9f5-068f9ac69920\"}]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/sellers/save",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "sellers",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 read all seller",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/sellers/all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "sellers",
+            "all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 read seler by is",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/sellers/21818590-fff0-446e-88e3-cbed1b5c8265",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "sellers",
+            "21818590-fff0-446e-88e3-cbed1b5c8265"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 update seller by id",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"firstName\": \"Alice\",\n    \"lastName\": \"Bagasha\",\n    \"phone\": \"0784534872\",\n    \"farmLocation\": \"Nyagatare\",\n    \"Stall\": {\"id\": \"85d507cd-1501-4f90-88b9-e8856b2c335d\"}, \"animalTypes\": [{\"id\": \"4c3ef41a-c32f-49a2-b9f5-068f9ac69920\"}]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/sellers/update/21818590-fff0-446e-88e3-cbed1b5c8265",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "sellers",
+            "update",
+            "21818590-fff0-446e-88e3-cbed1b5c8265"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 delete sellers",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/sellers/delete/21818590-fff0-446e-88e3-cbed1b5c8265",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "sellers",
+            "delete",
+            "21818590-fff0-446e-88e3-cbed1b5c8265"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 create animal sale",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"saleDate\": \"2026-10-19\",\n    \"status\":\"INQUIRED\",\n    \"breed\": \"Ankole\",\n    \"askingPrice\": 450000.0, \n    \"buyer\": {\"id\": \"f269b09f-e228-424a-a925-9d6d4cde600f\"},\n    \"seller\": {\"id\": \"1d556e62-d6df-4a19-9271-2efd5273d869\"}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/animal-sales/save",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "animal-sales",
+            "save"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 read all animal sales",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/animal-sales/all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "animal-sales",
+            "all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 read animal sale by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/animal-sales/a37cde2a-fe89-4d4d-857d-6a8ef114c240",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "animal-sales",
+            "a37cde2a-fe89-4d4d-857d-6a8ef114c240"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 update animal sales by id",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"saleDate\": \"2026-10-19\",\n    \"status\":\"SOLD\",\n    \"breed\": \"Ankole\",\n    \"askingPrice\": 450000.0, \n    \"buyer\": {\"id\": \"f269b09f-e228-424a-a925-9d6d4cde600f\"},\n    \"seller\": {\"id\": \"1d556e62-d6df-4a19-9271-2efd5273d869\"}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/animal-sales/update/a37cde2a-fe89-4d4d-857d-6a8ef114c240",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "animal-sales",
+            "update",
+            "a37cde2a-fe89-4d4d-857d-6a8ef114c240"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "A2 delete animal sales",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/animal-sales/delete/a37cde2a-fe89-4d4d-857d-6a8ef114c240",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "animal-sales",
+            "delete",
+            "a37cde2a-fe89-4d4d-857d-6a8ef114c240"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
