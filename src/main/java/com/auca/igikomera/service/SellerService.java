@@ -31,7 +31,7 @@ public class SellerService {
     }
     public String update(UUID id, Seller seller) {
         if (!sellerRepository.existsById(id)) {
-            return "The seller with that id does not exist";
+            return "The seller with that id doesn't exist";
         }
         seller.setId(id);
         sellerRepository.save(seller);
@@ -40,7 +40,7 @@ public class SellerService {
 
     public String delete(UUID id) {
         if (!sellerRepository.existsById(id)) {
-            return "Seller's id provided doesn't exist ";
+            return "The seller with that id doesn't exist";
         }
         sellerRepository.deleteById(id);
         return "Seller deleted succesfully";

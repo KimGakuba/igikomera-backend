@@ -33,12 +33,12 @@ public class AnimalTypeController {
         if (animalType.isPresent()) {
             return new ResponseEntity<>(animalType.get(), HttpStatus.OK);
         }
-        return new ResponseEntity<>("The animal type with that id does not exist", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("The animal type with that id doesn't exist", HttpStatus.NOT_FOUND);
     }
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable UUID id) {
         String message = animalTypeService.delete(id);
-        if (message.equals("The animal type with that id does not exist")) {
+        if (message.equals("The animal type with that id doesn't exist")) {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(message, HttpStatus.OK);

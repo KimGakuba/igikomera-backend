@@ -26,16 +26,24 @@ public class AnimalSaleService {
 
     }
 
-    public String update(UUID id, AnimalSale animalSale){
-        if (!animalSaleRepository.existsById(id)){
+    public String update(UUID id, AnimalSale newData) {
+        Optional<AnimalSale> found = animalSaleRepository.findById(id);
+        if (found.isEmpty()) {
             return "The animal sale with that id does not exist";
         }
-        animalSale.setId(id);
-        return "Animal sale deleted successfuly";
+        AnimalSale animalSale = found.get();
+        animalSale.setSaleDate(newData.getSaleDate());
+        animalSale.setStatus(newData.getStatus());
+        animalSale.setBreed(newData.getBreed());
+        animalSale.setAskingPrice(newData.getAskingPrice());
+        animalSale.setBuyer(newData.getBuyer());
+        animalSale.setSeller(newData.getSeller());
+        animalSaleRepository.save(animalSale);
+        return "Animal sale updated successfully";
     }
     public String delete(UUID id) {
         if (!animalSaleRepository.existsById(id)) {
-            return "The animal sale with that id does not exist";
+            return "The animal sale with that id doesn't exist";
         }
         animalSaleRepository.deleteById(id);
         return "Animal sale deleted successfully";

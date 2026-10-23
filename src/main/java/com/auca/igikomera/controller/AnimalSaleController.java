@@ -43,10 +43,11 @@ public class AnimalSaleController {
     @PutMapping("/update/{id}")
     public ResponseEntity<String> update(@PathVariable UUID id, @RequestBody AnimalSale animalSale) {
         String message = animalSaleService.update(id, animalSale);
-        if (message.equals("The animal sale with that id doesn't exist")) {
+        if (message.equals("Animal sale updated successfully")) {
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(message, HttpStatus.OK);
     }
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable UUID id) {

@@ -29,7 +29,7 @@ public class StallService {
     }
     public String update(UUID id, Stall stall) {
         if (!stallRepository.existsById(id)) {
-            return "The stall with that id doesn't exist";
+            return "The stall with that id does not exist";
         }
         stall.setId(id);
         stallRepository.save(stall);
@@ -37,7 +37,7 @@ public class StallService {
     }
     public String delete(UUID id) {
         if (!stallRepository.existsById(id)) {
-            return "The stall with that id doesn't exist";
+            return "The stall with that id does not exist";
         }
         stallRepository.deleteById(id);
         return "Stall delleted successfully";

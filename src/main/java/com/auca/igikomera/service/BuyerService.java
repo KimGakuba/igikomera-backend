@@ -38,7 +38,7 @@ public class BuyerService {
     }
     public String delete(UUID id) {
         if (!buyerRepository.existsById(id)) {
-            return "The buyer with that id doesn't exist";
+            return "The buyer with that id does not exist";
         }
         buyerRepository.deleteById(id);
         return "Buyer deleted successfully";

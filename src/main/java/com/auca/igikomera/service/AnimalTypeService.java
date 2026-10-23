@@ -28,7 +28,7 @@ public class AnimalTypeService {
     }
     public String update(UUID id, AnimalType animalType) {
         if (!animalTypeRepository.existsById(id)) {
-            return "The animal type with that id does not exist";
+            return "The animal type with that id doesn't exist";
         }
         animalType.setId(id);
         animalTypeRepository.save(animalType);
@@ -36,7 +36,7 @@ public class AnimalTypeService {
     }
     public String delete(UUID id) {
         if (!animalTypeRepository.existsById(id)) {
-            return "The animal type with that id does not exist";
+            return "The animal type with that id doesn't exist";
         }
         animalTypeRepository.deleteById(id);
         return "Animal type deleted successfully.";
