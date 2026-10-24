@@ -28,13 +28,19 @@ public class BuyerService {
         return buyerRepository.findById(id);
 
     }
-    public String update(UUID id, Buyer buyer) {
-        if (!buyerRepository.existsById(id)) {
+    public String update(UUID id, Buyer newData) {
+        Optional<Buyer> found = buyerRepository.findById(id);
+        if (found.isEmpty()) {
             return "The buyer with that id does not exist";
         }
-        buyer.setId(id);
+        Buyer buyer = found.get();
+        buyer.setFirstName(newData.getFirstName());
+        buyer.setLastName(newData.getLastName());
+        buyer.setNationalId(newData.getNationalId());
+        buyer.setPhone(newData.getPhone());
+        buyer.setDistrict(newData.getDistrict());
         buyerRepository.save(buyer);
-        return "Buyer updated succcessfully";
+        return "Buyer updated successfully";
     }
     public String delete(UUID id) {
         if (!buyerRepository.existsById(id)) {

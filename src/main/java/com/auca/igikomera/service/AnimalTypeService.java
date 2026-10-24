@@ -26,17 +26,19 @@ public class AnimalTypeService {
     public Optional<AnimalType> getById(UUID id){
         return animalTypeRepository.findById(id);
     }
-    public String update(UUID id, AnimalType animalType) {
-        if (!animalTypeRepository.existsById(id)) {
-            return "The animal type with that id doesn't exist";
+    public String update(UUID id, AnimalType newData) {
+        Optional<AnimalType> found = animalTypeRepository.findById(id);
+        if (found.isEmpty()) {
+            return "The animal type with that id does not exist";
         }
-        animalType.setId(id);
+        AnimalType animalType = found.get();
+        animalType.setName(newData.getName());
         animalTypeRepository.save(animalType);
-        return "Animal type updated succesfully";
+        return "Animal type updated successfully";
     }
     public String delete(UUID id) {
         if (!animalTypeRepository.existsById(id)) {
-            return "The animal type with that id doesn't exist";
+            return "The animal type with that id does not exist";
         }
         animalTypeRepository.deleteById(id);
         return "Animal type deleted successfully.";

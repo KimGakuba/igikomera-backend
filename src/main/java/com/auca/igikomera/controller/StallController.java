@@ -47,10 +47,11 @@ public class StallController {
     @PutMapping("/update/{id}")
     public ResponseEntity<String> update(@PathVariable UUID id, @RequestBody Stall stall) {
         String message = stallService.update(id, stall);
-        if (message.equals("The stall with that id does not exist")) {
+        if (message.equals("Stall updated successfully")) {
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(message, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")

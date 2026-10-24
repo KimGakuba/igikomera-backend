@@ -29,18 +29,25 @@ public class SellerService {
         return sellerRepository.findById(id);
 
     }
-    public String update(UUID id, Seller seller) {
-        if (!sellerRepository.existsById(id)) {
-            return "The seller with that id doesn't exist";
+    public String update(UUID id, Seller newData) {
+        Optional<Seller> found = sellerRepository.findById(id);
+        if (found.isEmpty()) {
+            return "The seller with that id does not exist";
         }
-        seller.setId(id);
+        Seller seller = found.get();
+        seller.setFirstName(newData.getFirstName());
+        seller.setLastName(newData.getLastName());
+        seller.setPhone(newData.getPhone());
+        seller.setFarmLocation(newData.getFarmLocation());
+        seller.setStall(newData.getStall());
+        seller.setAnimalTypes(newData.getAnimalTypes());
         sellerRepository.save(seller);
         return "Seller updated successfully";
     }
 
     public String delete(UUID id) {
         if (!sellerRepository.existsById(id)) {
-            return "The seller with that id doesn't exist";
+            return "The seller with that id does not exist";
         }
         sellerRepository.deleteById(id);
         return "Seller deleted succesfully";

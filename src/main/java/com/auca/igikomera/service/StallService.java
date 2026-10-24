@@ -27,11 +27,14 @@ public class StallService {
     public Optional<Stall> getById(UUID id) {
         return stallRepository.findById(id);
     }
-    public String update(UUID id, Stall stall) {
-        if (!stallRepository.existsById(id)) {
+    public String update(UUID id, Stall newData) {
+        Optional<Stall> found = stallRepository.findById(id);
+        if (found.isEmpty()) {
             return "The stall with that id does not exist";
         }
-        stall.setId(id);
+        Stall stall = found.get();
+        stall.setStallNumber(newData.getStallNumber());
+        stall.setName(newData.getName());
         stallRepository.save(stall);
         return "Stall updated successfully";
     }

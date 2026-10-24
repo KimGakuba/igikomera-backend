@@ -50,16 +50,17 @@ public class SellerController {
     @PutMapping("/update/{id}")
     public ResponseEntity<String> update(@PathVariable UUID id, @RequestBody Seller seller) {
         String message = sellerService.update(id, seller);
-        if (message.equals("The seller with that id doesn't exist")) {
+        if (message.equals("Seller updated successfully")) {
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(message, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable UUID id) {
         String message = sellerService.delete(id);
-        if (message.equals("The seller with that id doesn't exist")) {
+        if (message.equals("The seller with that id does not exist")) {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(message, HttpStatus.OK);

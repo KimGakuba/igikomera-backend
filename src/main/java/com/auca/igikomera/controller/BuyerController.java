@@ -51,9 +51,10 @@ public class BuyerController {
     @PutMapping("/update/{id}")
     public ResponseEntity<String> update(@PathVariable UUID id, @RequestBody Buyer buyer) {
         String message = buyerService.update(id, buyer);
-        if (message.equals("The buyer with that id does not exist")) {
+        if (message.equals("Buyer updated successfully")) {
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(message, HttpStatus.OK);
     }
 }

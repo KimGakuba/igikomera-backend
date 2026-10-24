@@ -52,7 +52,7 @@ public class AnimalSaleController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable UUID id) {
         String message = animalSaleService.delete(id);
-        if (message.equals("The animal sale with that id doesn't exist")) {
+        if (message.equals("The animal sale with that id does not exist")) {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(message, HttpStatus.OK);

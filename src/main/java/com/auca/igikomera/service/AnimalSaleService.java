@@ -43,7 +43,7 @@ public class AnimalSaleService {
     }
     public String delete(UUID id) {
         if (!animalSaleRepository.existsById(id)) {
-            return "The animal sale with that id doesn't exist";
+            return "The animal sale with that id does not exist";
         }
         animalSaleRepository.deleteById(id);
         return "Animal sale deleted successfully";
