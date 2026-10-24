@@ -50,4 +50,8 @@ public class BuyerService {
         return "Buyer deleted successfully";
     }
 
+    public List<Buyer> getByLastName(String lastName) {
+        return buyerRepository.findByLastNameIgnoreCaseOrderByFirstNameAsc(lastName);
+    }
+
 }

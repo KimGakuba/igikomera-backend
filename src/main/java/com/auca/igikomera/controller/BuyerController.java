@@ -1,20 +1,16 @@
 package com.auca.igikomera.controller;
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.auca.igikomera.service.BuyerService;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
 import java.util.UUID;
 import java.util.Optional;
 import com.auca.igikomera.model.Buyer;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PostMapping;
+
 @RestController
 @RequestMapping("/api/buyers")
 public class BuyerController {
@@ -47,6 +43,10 @@ public class BuyerController {
         }
         return new ResponseEntity<>("The buyer with that id does not exist", HttpStatus.NOT_FOUND);
     }
+    @GetMapping("/by-last-name")
+    public ResponseEntity<List<Buyer>> getByLastName(@RequestParam String lastName) {
+        return new ResponseEntity<>(buyerService.getByLastName(lastName), HttpStatus.OK);
+    }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<String> update(@PathVariable UUID id, @RequestBody Buyer buyer) {
@@ -57,4 +57,5 @@ public class BuyerController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }
+
 }

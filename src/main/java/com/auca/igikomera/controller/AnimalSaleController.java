@@ -1,20 +1,17 @@
 package com.auca.igikomera.controller;
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.auca.igikomera.model.SaleStatus;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.auca.igikomera.service.AnimalSaleService;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PathVariable;
+
+import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 import java.util.Optional;
 import com.auca.igikomera.model.AnimalSale;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @RestController
 @RequestMapping("/api/animal-sales")
@@ -56,5 +53,15 @@ public class AnimalSaleController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+    @GetMapping("/by-status")
+    public ResponseEntity<List<AnimalSale>> getByStatus(@RequestParam SaleStatus status) {
+        return new ResponseEntity<>(animalSaleService.getByStatus(status), HttpStatus.OK);
+    }
+    @GetMapping("/between")
+    public ResponseEntity<List<AnimalSale>> getBetween(@RequestParam String start, @RequestParam String end) {
+        LocalDate startDate = LocalDate.parse(start);
+        LocalDate endDate = LocalDate.parse(end);
+        return new ResponseEntity<>(animalSaleService.getBetween(startDate, endDate), HttpStatus.OK);
     }
 }

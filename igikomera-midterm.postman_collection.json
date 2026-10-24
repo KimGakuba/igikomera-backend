@@ -189,7 +189,7 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/api/stalls/b6809c7e-5f64-452b-add1-98ffa0c2907f",
+          "raw": "http://localhost:8080/api/stalls/5c3da362-5537-42ea-853a-789fa017cf98",
           "protocol": "http",
           "host": [
             "localhost"
@@ -198,7 +198,7 @@
           "path": [
             "api",
             "stalls",
-            "b6809c7e-5f64-452b-add1-98ffa0c2907f"
+            "5c3da362-5537-42ea-853a-789fa017cf98"
           ]
         }
       },
@@ -219,7 +219,7 @@
           }
         },
         "url": {
-          "raw": "http://localhost:8080/api/stalls/update/b6809c7e-5f64-452b-add1-98ffa0c2907f",
+          "raw": "http://localhost:8080/api/stalls/update/5c3da362-5537-42ea-853a-789fa017cf98",
           "protocol": "http",
           "host": [
             "localhost"
@@ -229,7 +229,7 @@
             "api",
             "stalls",
             "update",
-            "b6809c7e-5f64-452b-add1-98ffa0c2907f"
+            "5c3da362-5537-42ea-853a-789fa017cf98"
           ]
         }
       },
@@ -627,6 +627,91 @@
             "animal-sales",
             "delete",
             "a37cde2a-fe89-4d4d-857d-6a8ef114c240"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "B1 by lastName",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/buyers/by-last-name?lastName=gakuba",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "buyers",
+            "by-last-name"
+          ],
+          "query": [
+            {
+              "key": "lastName",
+              "value": "gakuba"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "B2 by status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/animal-sales/by-status?status=SOLD",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "animal-sales",
+            "by-status"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "SOLD"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "B3 sales btn dates",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/animal-sales/between?start=2026-10-01&end=2026-10-31",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "animal-sales",
+            "between"
+          ],
+          "query": [
+            {
+              "key": "start",
+              "value": "2026-10-01"
+            },
+            {
+              "key": "end",
+              "value": "2026-10-31"
+            }
           ]
         }
       },

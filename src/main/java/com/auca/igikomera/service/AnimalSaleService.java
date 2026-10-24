@@ -1,10 +1,12 @@
 package com.auca.igikomera.service;
 
 import com.auca.igikomera.model.AnimalSale;
+import com.auca.igikomera.model.SaleStatus;
 import com.auca.igikomera.repository.AnimalSaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -47,6 +49,13 @@ public class AnimalSaleService {
         }
         animalSaleRepository.deleteById(id);
         return "Animal sale deleted successfully";
+    }
+    public List<AnimalSale> getByStatus(SaleStatus status) {
+        return animalSaleRepository.findByStatusOrderBySaleDateAsc(status);
+    }
+
+    public List<AnimalSale> getBetween(LocalDate start, LocalDate end) {
+        return animalSaleRepository.findBySaleDateBetweenOrderBySaleDateAsc(start, end);
     }
 
 }
