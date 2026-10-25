@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
 import java.util.UUID;
 import java.util.Optional;
 import com.auca.igikomera.model.AnimalType;
@@ -56,6 +58,13 @@ public class AnimalTypeController {
     public ResponseEntity<String> save(@RequestBody AnimalType animalType) {
         String message = animalTypeService.save(animalType);
         return new ResponseEntity<>(message, HttpStatus.CREATED);
+    }
+
+
+    @GetMapping("/unused")
+    public ResponseEntity<List<AnimalType>>getUnused(){
+        return new ResponseEntity<>(animalTypeService.getUnused(),HttpStatus.OK);
+
     }
 
 }

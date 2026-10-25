@@ -58,4 +58,12 @@ public class BuyerController {
         }
     }
 
+    @GetMapping("/of-seller/{sellerId}")
+    public ResponseEntity<?> getBuyersOfSeller(@PathVariable UUID sellerId){
+        if(!buyerService.sellerExists(sellerId)){
+            return new ResponseEntity<>("The seller with that id does not exist",HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(buyerService.getBuyersOfSeller(sellerId),HttpStatus.OK);
+    }
+
 }

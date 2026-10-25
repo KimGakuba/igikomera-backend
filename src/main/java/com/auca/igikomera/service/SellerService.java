@@ -52,5 +52,9 @@ public class SellerService {
         sellerRepository.deleteById(id);
         return "Seller deleted succesfully";
     }
+    public List<Seller> getByAnimalType(String name){
+
+        return sellerRepository.findByAnimalTypeName(name);
+    }
 }
 

@@ -2,6 +2,7 @@ package com.auca.igikomera.service;
 
 import com.auca.igikomera.model.Buyer;
 import com.auca.igikomera.repository.BuyerRepository;
+import com.auca.igikomera.repository.SellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,9 @@ public class BuyerService {
 
     @Autowired
     private BuyerRepository buyerRepository;
+    @Autowired
+    private SellerRepository sellerRepository;
+
     public String save (Buyer buyer){
         buyerRepository.save(buyer);
         return "Buyer saved succesfully";
@@ -53,5 +57,15 @@ public class BuyerService {
     public List<Buyer> getByLastName(String lastName) {
         return buyerRepository.findByLastNameIgnoreCaseOrderByFirstNameAsc(lastName);
     }
+    public boolean sellerExists(UUID sellerId){
+        return sellerRepository.existsById(sellerId);
+
+    }
+
+    public List<Buyer> getBuyersOfSeller(UUID sellerId){
+        return buyerRepository.findBuyersOfSeller(sellerId);
+    }
+
+
 
 }

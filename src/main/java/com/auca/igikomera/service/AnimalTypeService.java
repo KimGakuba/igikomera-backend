@@ -44,4 +44,9 @@ public class AnimalTypeService {
         return "Animal type deleted successfully.";
     }
 
+    public List<AnimalType>getUnused(){
+
+        return animalTypeRepository.findUnused();
+    }
+
 }

@@ -45,5 +45,8 @@ public class StallService {
         stallRepository.deleteById(id);
         return "Stall delleted successfully";
     }
+    public List<Stall> getFreeStalls(){
+        return  stallRepository.findFreeStalls();
+    }
 }
 

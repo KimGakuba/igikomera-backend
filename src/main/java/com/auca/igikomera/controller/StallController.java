@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -61,6 +62,14 @@ public class StallController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+
+
+
+
+    @GetMapping("/free")
+    public ResponseEntity<List<Stall>>getFreeStalls() {
+        return new ResponseEntity<>(stallService.getFreeStalls(),HttpStatus.OK);
     }
 }
 
