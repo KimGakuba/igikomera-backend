@@ -6,7 +6,7 @@ set -euo pipefail
 BASE="http://localhost:8080/api"
 
 post() {
-  curl -s -X POST "$1" -H "Content-Type: application/json" -d "$2" > /dev/null
+  curl -sS -f -X POST "$1" -H "Content-Type: application/json" -d "$2" > /dev/null
 }
 
 id_by() {
