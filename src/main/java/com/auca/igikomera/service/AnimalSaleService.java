@@ -15,8 +15,20 @@ import java.util.UUID;
 public class AnimalSaleService {
     @Autowired
     private AnimalSaleRepository animalSaleRepository;
-    public String save(AnimalSale animalSale){
+    public String save(AnimalSale animalSale)  {
+
+        if (animalSale.getSaleDate().isBefore(LocalDate.now())){
+            return "Animal sale date cannot be in the past";
+
+        }
+        if (animalSaleRepository.existsBySellerAndSaleDateAndStatusNot(
+                animalSale.getSeller(), animalSale.getSaleDate(),SaleStatus.WITHDRAWN)){
+
+              return "Seller already has a sale on that date";
+        }
+        animalSale.setStatus(SaleStatus.INQUIRED);
         animalSaleRepository.save(animalSale);
+
         return "Animal sale saved successfully";
     }
     public List<AnimalSale> getAll(){
@@ -28,20 +40,33 @@ public class AnimalSaleService {
 
     }
 
-    public String update(UUID id, AnimalSale newData) {
-        Optional<AnimalSale> found = animalSaleRepository.findById(id);
-        if (found.isEmpty()) {
+    public String update(UUID id, AnimalSale animalSale) {
+        Optional<AnimalSale> existing = animalSaleRepository.findById(id);
+        if (existing.isEmpty()) {
             return "The animal sale with that id does not exist";
         }
-        AnimalSale animalSale = found.get();
-        animalSale.setSaleDate(newData.getSaleDate());
-        animalSale.setStatus(newData.getStatus());
-        animalSale.setBreed(newData.getBreed());
-        animalSale.setAskingPrice(newData.getAskingPrice());
-        animalSale.setBuyer(newData.getBuyer());
-        animalSale.setSeller(newData.getSeller());
+        animalSale.setId(id);
+        animalSale.setStatus(existing.get().getStatus());
         animalSaleRepository.save(animalSale);
         return "Animal sale updated successfully";
+    }
+    public String updateStatus(UUID id, SaleStatus newStatus) {
+        Optional<AnimalSale> existing = animalSaleRepository.findById(id);
+        if (existing.isEmpty()) {
+            return "The animal sale with that id does not exist";
+        }
+        AnimalSale animalSale = existing.get();
+        SaleStatus current = animalSale.getStatus();
+
+        boolean allowed = (current == SaleStatus.INQUIRED && (newStatus == SaleStatus.NEGOTIATED || newStatus == SaleStatus.WITHDRAWN))
+                || (current == SaleStatus.NEGOTIATED && (newStatus == SaleStatus.SOLD || newStatus == SaleStatus.WITHDRAWN));
+
+        if (!allowed) {
+            return "Cannot change status from " + current + " to " + newStatus;
+        }
+        animalSale.setStatus(newStatus);
+        animalSaleRepository.save(animalSale);
+        return "Animal sale status updated successfully";
     }
     public String delete(UUID id) {
         if (!animalSaleRepository.existsById(id)) {

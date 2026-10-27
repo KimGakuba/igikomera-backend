@@ -19,10 +19,15 @@ public class AnimalSaleController {
     @Autowired
     private AnimalSaleService animalSaleService;
     @PostMapping("/save")
-    public ResponseEntity<String> save(@RequestBody AnimalSale animalSale) {
+    public ResponseEntity<String>save(@RequestBody AnimalSale animalSale){
         String message = animalSaleService.save(animalSale);
-        return new ResponseEntity<>(message, HttpStatus.CREATED);
-
+        if (message.equals("Animal sale date cannot be in the past")){
+            return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+        }
+        if (message.equals("Seller already has a sale on that date")) {
+            return new ResponseEntity<>(message,HttpStatus.CONFLICT);
+        }
+        return new ResponseEntity<>(message,HttpStatus.CREATED);
     }
     @GetMapping("/all")
     public ResponseEntity<?> getAll() {
@@ -63,5 +68,19 @@ public class AnimalSaleController {
         LocalDate startDate = LocalDate.parse(start);
         LocalDate endDate = LocalDate.parse(end);
         return new ResponseEntity<>(animalSaleService.getBetween(startDate, endDate), HttpStatus.OK);
+    }
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<String>updateStatus(@PathVariable UUID id, @RequestParam SaleStatus status){
+        String message= animalSaleService.updateStatus(id,status);
+        if (message.equals("The animal sale with that id does not exist"))  {
+
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+        if(message.startsWith("Cannot change status from")){
+
+            return new ResponseEntity<>(message,  HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(message,HttpStatus.OK);
     }
 }

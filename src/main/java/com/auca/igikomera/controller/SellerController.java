@@ -62,5 +62,35 @@ public class SellerController {
     public ResponseEntity<List<Seller>>getByAnimalType(@RequestParam String name){
         return new ResponseEntity<> (sellerService.getByAnimalType(name),HttpStatus.OK);
     }
-}
 
+    @PatchMapping("/{sellerId}/stall")
+    public ResponseEntity<String> changeStall(@PathVariable UUID sellerId,@RequestParam int stallNumber){
+
+        String message =sellerService.changeStall(sellerId,stallNumber);
+        if(message.equals("The seller with that id does not exist") || message.equals("The stall with that stallNumber does not exist")){
+            return new ResponseEntity<>(message,HttpStatus.NOT_FOUND);
+
+        }
+        if(message.equals("That stall is taken by another seller")){
+
+            return new ResponseEntity<>(message,HttpStatus.CONFLICT);
+        }
+        return new ResponseEntity<>(message,   HttpStatus.OK);
+    }
+
+
+    @PutMapping("/{sellerId}/animal-types/{animalTypeId}")
+    public ResponseEntity<String>addAnimalType(@PathVariable UUID sellerId,@PathVariable UUID animalTypeId){
+
+        String message=  sellerService.addAnimalType(sellerId,animalTypeId);
+        if (message.equals ("The seller with that id does not exist") || message.equals("That animal type does not exist")){
+            return new ResponseEntity<>(message,HttpStatus.NOT_FOUND);
+
+        }
+        if (message.equals("The seller already has that animal type")){
+            return new ResponseEntity<>(message,  HttpStatus.CONFLICT);
+        }
+        return new ResponseEntity<>(message,HttpStatus.OK);
+
+    }
+}
