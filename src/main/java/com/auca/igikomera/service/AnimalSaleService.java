@@ -5,7 +5,7 @@ import com.auca.igikomera.model.SaleStatus;
 import com.auca.igikomera.repository.AnimalSaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.auca.igikomera.repository.PaymentRepository;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +13,9 @@ import java.util.UUID;
 
 @Service
 public class AnimalSaleService {
+    @Autowired
+    private PaymentRepository paymentRepository;
+
     @Autowired
     private AnimalSaleRepository animalSaleRepository;
     public String save(AnimalSale animalSale)  {
@@ -69,8 +72,12 @@ public class AnimalSaleService {
         return "Animal sale status updated successfully";
     }
     public String delete(UUID id) {
-        if (!animalSaleRepository.existsById(id)) {
+        Optional<AnimalSale> existing=animalSaleRepository.findById(id);
+        if (existing.isEmpty()) {
             return "The animal sale with that id does not exist";
+        }
+        if(paymentRepository.existsByAnimalSale(existing.get())){
+            return  "That animal sale has payments, delete them first";
         }
         animalSaleRepository.deleteById(id);
         return "Animal sale deleted successfully";

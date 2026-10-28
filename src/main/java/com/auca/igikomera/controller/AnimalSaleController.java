@@ -57,6 +57,10 @@ public class AnimalSaleController {
         if (message.equals("The animal sale with that id does not exist")) {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
+        if(message.equals("That animal sale has payments, delete them first")){
+            return new ResponseEntity<>(message,HttpStatus.CONFLICT);
+
+        }
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
     @GetMapping("/by-status")
