@@ -8,7 +8,7 @@
   },
   "item": [
     {
-      "name": "A2",
+      "name": "Part A",
       "item": [
         {
           "name": "A2 delete animal sales",
@@ -870,6 +870,120 @@
                 "buyers",
                 "of-seller",
                 "f1c5e644-128e-4099-ad3b-011c8ae0f136"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Part D",
+      "item": [
+        {
+          "name": "D1 safe saving",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"saleDate\": \"2027-11-15\",\n    \"status\": \"SOLD\",\n    \"breed\": \"Ankole\",\n    \"askingPrice\": 100000,\n    \"buyer\": {\"id\": \"ee29d56f-6275-4851-9390-311b8ed8419c\"},\n    \"seller\": {\"id\": \"a314ab57-64c5-4734-8117-04295d8f53e8\"}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/animal-sales/save",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "animal-sales",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "D2 Status flow",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/animal-sales/f1d77aba-f7b5-409e-a630-76bb81f9b8ee/status?status=SOLD",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "animal-sales",
+                "f1d77aba-f7b5-409e-a630-76bb81f9b8ee",
+                "status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "SOLD"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "D3 add animal type to seller",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/sellers/f1c5e644-128e-4099-ad3b-011c8ae0f136/animal-types/ce166f6b-7caa-4ad5-ac7f-08cd2aab9fd8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "sellers",
+                "f1c5e644-128e-4099-ad3b-011c8ae0f136",
+                "animal-types",
+                "ce166f6b-7caa-4ad5-ac7f-08cd2aab9fd8"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "D4 move Seller to anothe stall",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/sellers/f1c5e644-128e-4099-ad3b-011c8ae0f136/stall?stallNumber=10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "sellers",
+                "f1c5e644-128e-4099-ad3b-011c8ae0f136",
+                "stall"
+              ],
+              "query": [
+                {
+                  "key": "stallNumber",
+                  "value": "10"
+                }
               ]
             }
           },
