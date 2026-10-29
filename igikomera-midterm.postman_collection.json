@@ -990,6 +990,113 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "Part E",
+      "item": [
+        {
+          "name": "E1 SAVE payment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"method\":\"Bank Transfer\",\n    \"reference\":\"BK TXN 778812\",\n    \"amountRwf\" : 2200000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/payments/save?animalSaleId=35f806df-af6e-41af-baf4-81ea862e45da",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "payments",
+                "save"
+              ],
+              "query": [
+                {
+                  "key": "animalSaleId",
+                  "value": "35f806df-af6e-41af-baf4-81ea862e45da"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "E2 buyer pay history",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/payments/buyer/1198880023456791",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "payments",
+                "buyer",
+                "1198880023456791"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "E3 delete payment",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/payments/delete/ae847c92-08e5-41da-b37c-61569d374c69",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "payments",
+                "delete",
+                "ae847c92-08e5-41da-b37c-61569d374c69"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "E3 SOLD sales procteted",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/animal-sales/delete/6306c9f7-3c56-41b8-a97c-2b8eeb989c71",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "animal-sales",
+                "delete",
+                "6306c9f7-3c56-41b8-a97c-2b8eeb989c71"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ]
 }
