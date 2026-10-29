@@ -6,6 +6,8 @@ import com.auca.igikomera.repository.AnimalSaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.auca.igikomera.repository.PaymentRepository;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -88,6 +90,15 @@ public class AnimalSaleService {
 
     public List<AnimalSale> getBetween(LocalDate start, LocalDate end) {
         return animalSaleRepository.findBySaleDateBetweenOrderBySaleDateAsc(start, end);
+    }
+    public List<Object[]> getStatsByStatus(){
+        return animalSaleRepository.countByStatus();
+
+    }
+    @Transactional
+    public int cancelDay(UUID sellerId, LocalDate date){
+        return animalSaleRepository.cancelDay(sellerId,date);
+
     }
 
 }

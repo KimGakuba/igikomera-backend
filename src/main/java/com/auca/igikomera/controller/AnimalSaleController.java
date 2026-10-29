@@ -87,4 +87,16 @@ public class AnimalSaleController {
 
         return new ResponseEntity<>(message,HttpStatus.OK);
     }
+
+
+    @GetMapping("/stats/by-status")
+    public ResponseEntity<List<Object[]>>getStatsByStatus(){
+        return new ResponseEntity<>(animalSaleService.getStatsByStatus(),HttpStatus.OK);
+
+    }
+    @PatchMapping("/cancel-day")
+    public ResponseEntity<String>cancelDay(@RequestParam UUID sellerId,@RequestParam String date){
+        int cancelled= animalSaleService.cancelDay(sellerId, LocalDate.parse(date));
+        return new ResponseEntity<>(cancelled + " animal sales cancelled",HttpStatus.OK);
+    }
 }

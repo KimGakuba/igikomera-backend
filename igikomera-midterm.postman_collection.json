@@ -1097,6 +1097,64 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "Part F",
+      "item": [
+        {
+          "name": "F1 sales per status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/animal-sales/stats/by-status",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "animal-sales",
+                "stats",
+                "by-status"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "F2 cancel a seller day",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/animal-sales/cancel-day?sellerId=aweuf8&date=2026-12-31",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "animal-sales",
+                "cancel-day"
+              ],
+              "query": [
+                {
+                  "key": "sellerId",
+                  "value": "aweuf8"
+                },
+                {
+                  "key": "date",
+                  "value": "2026-12-31"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ]
 }
