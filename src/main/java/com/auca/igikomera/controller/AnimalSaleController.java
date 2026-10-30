@@ -1,6 +1,10 @@
 package com.auca.igikomera.controller;
 
 import com.auca.igikomera.model.SaleStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.auca.igikomera.service.AnimalSaleService;
@@ -98,5 +102,15 @@ public class AnimalSaleController {
     public ResponseEntity<String>cancelDay(@RequestParam UUID sellerId,@RequestParam String date){
         int cancelled= animalSaleService.cancelDay(sellerId, LocalDate.parse(date));
         return new ResponseEntity<>(cancelled + " animal sales cancelled",HttpStatus.OK);
+    }
+
+
+    @GetMapping("/page")
+    public ResponseEntity<Page<AnimalSale>> getPage(@RequestParam int page,@RequestParam int size, @RequestParam String sort){
+        String[] sortParts= sort.split(",");
+        Sort.Direction direction = sortParts.length>1 && sortParts[1].equalsIgnoreCase("desc") ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Pageable pageable = PageRequest.of(page,size, Sort.by(direction,sortParts[0]));
+        return new ResponseEntity<>(animalSaleService.getPage(pageable),HttpStatus.OK);
+
     }
 }

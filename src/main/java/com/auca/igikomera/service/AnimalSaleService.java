@@ -4,6 +4,8 @@ import com.auca.igikomera.model.AnimalSale;
 import com.auca.igikomera.model.SaleStatus;
 import com.auca.igikomera.repository.AnimalSaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.auca.igikomera.repository.PaymentRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -99,6 +101,10 @@ public class AnimalSaleService {
     public int cancelDay(UUID sellerId, LocalDate date){
         return animalSaleRepository.cancelDay(sellerId,date);
 
+    }
+
+    public Page<AnimalSale> getPage(Pageable pageable){
+        return animalSaleRepository.findAll(pageable);
     }
 
 }

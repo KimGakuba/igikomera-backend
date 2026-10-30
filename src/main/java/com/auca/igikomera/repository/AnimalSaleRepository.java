@@ -25,4 +25,7 @@ public interface AnimalSaleRepository extends JpaRepository<AnimalSale, UUID> {
             + "WHERE a.seller.id = :sellerId AND a.saleDate = :date AND a.status <> com.auca.igikomera.model.SaleStatus.SOLD")
     int cancelDay(@Param("sellerId")UUID sellerId,@Param("date")LocalDate date);
 
+    long countBySaleDate(LocalDate saleDate);
+    long countByStatus(SaleStatus status);
+
 }
